@@ -161,9 +161,6 @@ ORDER BY
     Total_Quantity DESC
 LIMIT 3;
 
-Q3. Show each category’s:
-● Total revenue
-● Number of unique learners
 
 SELECT
     c.category AS Category,
@@ -238,6 +235,16 @@ WHERE unit_price > ANY
     WHERE category = 'Beginner'
 );
 
+SELECT
+    course_name,
+    category,
+    unit_price
+FROM courses
+WHERE unit_price > ALL (
+    SELECT unit_price
+    FROM courses
+    WHERE category = 'Beginner'
+);
 
 SELECT
     course_name,
